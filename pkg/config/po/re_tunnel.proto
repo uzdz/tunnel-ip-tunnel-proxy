@@ -1,0 +1,70 @@
+syntax = "proto3";
+
+import "pkg/config/po/config.proto";
+option java_package = "org.jeecg.modules.vps.proto";
+option java_outer_classname="ReTunnelPojo";
+option go_package = "pkg/config/po";
+
+message URq {
+
+    // 当前机器号
+    string deviceId = 1;
+
+    // 用户Id
+    string uid = 2;
+
+    // 是否切换
+    bool switchIp = 3;
+
+    // 应用Id
+    string appId = 4;
+
+    // 池子Id
+    string poolId = 5;
+
+    // 用户限流策略
+    string userConnectLimit = 6;
+}
+
+message URp {
+
+    // 服务器是否处理成功
+    int64 code = 1;
+
+    // 授权IP
+    string ip = 2;
+
+    // 过期时间
+    int64 expiredTime = 3;
+}
+
+message Rq {
+
+    // 当前机器号
+    string deviceId = 1;
+}
+
+message Rp {
+
+    // -------------- 标准参数
+    // 服务器是否处理成功
+    int64 code = 1;
+
+    // 隧道端口号
+    int64 port = 2;
+
+    // 是否需要验证 0需要 1不需要
+    int64 noAuth = 3;
+
+    // 应用Id
+    string appId = 4;
+
+    // 池子Id
+    string poolId = 5;
+
+    // 心跳时间间隔（秒）
+    int64 heartbeatInterval = 6;
+
+    // 授权/限流等配置
+    Config configData = 7;
+}
